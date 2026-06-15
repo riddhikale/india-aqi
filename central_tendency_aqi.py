@@ -9,3 +9,6 @@ def compute_central_tendency(data, label):
     label : string name for printing
     """
 
+ # ── MEAN ──────────────────────────────────────────────
+    # Formula: sum of all values divided by count
+    mean_val = np.sum(data) / len(data)
