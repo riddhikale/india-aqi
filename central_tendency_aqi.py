@@ -12,3 +12,6 @@ def compute_central_tendency(data, label):
  # ── MEAN ──────────────────────────────────────────────
     # Formula: sum of all values divided by count
     mean_val = np.sum(data) / len(data)
+
+# Verify against numpy's built in
+    assert abs(mean_val - np.mean(data)) < 0.001, "Mean mismatch"
