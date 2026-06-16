@@ -25,3 +25,15 @@ def compute_spread(data, label):
 
     assert abs(variance - np.var(data))  < 0.01
     assert abs(std_dev  - np.std(data))  < 0.01 
+
+    print('----------')
+    print(f" Variance   : {variance:.2f}")
+    print(f" Standard Deviation   : {std_dev:.2f}")
+    print(f" Range   : {range_val:.2f}")
+
+    return {
+        "pollutant": label,
+        "variance": round(variance, 2),
+        "standard deviance": round(std_dev, 2),
+        "range": round(range_val, 2),
+    }
