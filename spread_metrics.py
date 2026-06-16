@@ -37,3 +37,18 @@ def compute_spread(data, label):
         "standard deviance": round(std_dev, 2),
         "range": round(range_val, 2),
     }
+
+
+results = []
+
+# PM2.5
+pm25 = delhi["pm2_5"].dropna().values
+results.append(compute_spread(pm25, "PM2.5 — Delhi"))
+
+# PM10 
+pm10 = delhi["rspm"].dropna().values
+results.append(compute_spread(pm10, "PM10 (rspm) — Delhi"))
+
+# NO2
+no2 = delhi["no2"].dropna().values
+results.append(compute_spread(no2, "NO2 — Delhi"))
