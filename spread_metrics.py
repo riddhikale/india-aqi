@@ -19,3 +19,6 @@ def compute_spread(data, label):
 
     #standard deviation: square root of variance
     std_dev = np.sqrt(variance)
+
+    #range: simplest spread measure
+    range_val = np.max(data) - np.min(data)
