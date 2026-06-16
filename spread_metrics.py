@@ -22,3 +22,6 @@ def compute_spread(data, label):
 
     #range: simplest spread measure
     range_val = np.max(data) - np.min(data)
+
+    assert abs(variance - np.var(data))  < 0.01
+    assert abs(std_dev  - np.std(data))  < 0.01 
