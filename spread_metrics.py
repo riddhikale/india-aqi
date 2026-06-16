@@ -14,3 +14,8 @@ def compute_spread(data, label):
     #2: square each deviation (makes all positive)
     squared_devs = deviations ** 2
 
+    #3: average the squared deviations
+    variance = np.sum(squared_devs) / len(data)
+
+    #standard deviation: square root of variance
+    std_dev = np.sqrt(variance)
