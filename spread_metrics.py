@@ -60,6 +60,11 @@ print("----- ML CONNECTION -----")
 for r in results:
     z_example = (r["mean"] + r["std_dev"] - r["mean"]) / r["std_dev"]
     print(f"""
-            {r["label"]}
-            Mean     : {r["mean"]:.2f}
-            Std Dev  : {r["std_dev"]:.2f}
+    {r["label"]}
+     Mean     : {r["mean"]:.2f}
+    Std Dev  : {r["std_dev"]:.2f}
+
+     Z-score formula: (value - mean) / std_dev
+    A reading 1 std dev above mean → z = {z_example:.1f}
+    A reading at mean              → z = 0.0
+    """)
