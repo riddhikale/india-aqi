@@ -52,3 +52,14 @@ results.append(compute_spread(pm10, "PM10 (rspm) — Delhi"))
 # NO2
 no2 = delhi["no2"].dropna().values
 results.append(compute_spread(no2, "NO2 — Delhi"))
+
+
+#ML CONNECTION
+print("----- ML CONNECTION -----")
+
+for r in results:
+    z_example = (r["mean"] + r["std_dev"] - r["mean"]) / r["std_dev"]
+    print(f"""
+            {r["label"]}
+            Mean     : {r["mean"]:.2f}
+            Std Dev  : {r["std_dev"]:.2f}
