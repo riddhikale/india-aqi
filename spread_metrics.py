@@ -7,7 +7,11 @@ print(df.head())
 delhi = df[df["state"] == "Delhi"]
 print(f"Delhi rows: {len(delhi)}")
 
+
 def compute_spread(data, label):
+
+    mean_val = np.sum(data) / len(data)
+
     #1: distance of each value from the mean
     deviations = data - np.mean(data)
 
@@ -32,9 +36,10 @@ def compute_spread(data, label):
     print(f" Range   : {range_val:.2f}")
 
     return {
-        "pollutant": label,
+        "label": label,           
+        "mean": round(mean_val, 2),
         "variance": round(variance, 2),
-        "standard deviance": round(std_dev, 2),
+        "std_dev": round(std_dev, 2),
         "range": round(range_val, 2),
     }
 
@@ -58,10 +63,10 @@ results.append(compute_spread(no2, "NO2 — Delhi"))
 print("----- ML CONNECTION -----")
 
 for r in results:
-    z_example = (r["mean"] + r["std_dev"] - r["mean"]) / r["std_dev"]
+    z_example = (r["mean_val"] + r["std_dev"] - r["mean_val"]) / r["std_dev"]
     print(f"""
     {r["label"]}
-     Mean     : {r["mean"]:.2f}
+    Mean     : {r["mean_val"]:.2f}
     Std Dev  : {r["std_dev"]:.2f}
 
      Z-score formula: (value - mean) / std_dev
