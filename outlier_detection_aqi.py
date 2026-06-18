@@ -39,7 +39,8 @@ def detect_outliers(data, label):
     outlier_mask = (data < lower_bound) | (data > upper_bound)
     outlier_count = np.sum(outlier_mask)
 
-    
+    assert abs(q1 - np.percentile(data, 25)) < 0.5
+    assert abs(q3 - np.percentile(data, 75)) < 0.5
    
 
 
