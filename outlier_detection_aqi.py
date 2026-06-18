@@ -31,6 +31,11 @@ def detect_outliers(data, label):
         mid = m // 2
         q3 = (upper_half[mid-1] + upper_half[mid]) / 2
     
+
+    iqr = q3 - q1
+    lower_bound = q1 - 1.5 * iqr
+    upper_bound = q3 + 1.5 * iqr
+    
    
 
 
