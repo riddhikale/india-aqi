@@ -61,6 +61,7 @@ def detect_outliers(data, label):
         "outlier_count": round(outlier_count, 2)
     }
 
+
     results = []
 
     # PM2.5
@@ -77,4 +78,7 @@ def detect_outliers(data, label):
    
 
     delhi_reset = delhi[["sampling_date", "location", "pm2_5"]].dropna().reset_index(drop=True)
+
+    extreme_rows = delhi_reset[delhi_reset["pm2_5"] > upper_bound_pm25]
+    print(extreme_rows.sort_values("pm2_5", ascending=False).head(5))
     
