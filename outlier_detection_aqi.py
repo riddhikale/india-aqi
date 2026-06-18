@@ -36,6 +36,10 @@ def detect_outliers(data, label):
     lower_bound = q1 - 1.5 * iqr
     upper_bound = q3 + 1.5 * iqr
     
+    outlier_mask = (data < lower_bound) | (data > upper_bound)
+    outlier_count = np.sum(outlier_mask)
+
+    
    
 
 
