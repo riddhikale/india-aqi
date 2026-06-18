@@ -60,6 +60,20 @@ def detect_outliers(data, label):
         "upper_bound": round(upper_bound, 2),
         "outlier_count": round(outlier_count, 2)
     }
+
+    results = []
+
+    # PM2.5
+    pm25 = delhi["pm2_5"].dropna().values
+    results.append(compute_spread(pm25, "PM2.5 — Delhi"))
+
+    # PM10 
+    pm10 = delhi["rspm"].dropna().values
+    results.append(compute_spread(pm10, "PM10 (rspm) — Delhi"))
+
+    # NO2
+    no2 = delhi["no2"].dropna().values
+    results.append(compute_spread(no2, "NO2 — Delhi"))
    
 
 
