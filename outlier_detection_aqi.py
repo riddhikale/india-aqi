@@ -76,5 +76,5 @@ def detect_outliers(data, label):
     results.append(compute_spread(no2, "NO2 — Delhi"))
    
 
-
+    delhi_reset = delhi[["sampling_date", "location", "pm2_5"]].dropna().reset_index(drop=True)
     
