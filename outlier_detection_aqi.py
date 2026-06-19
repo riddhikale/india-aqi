@@ -18,7 +18,7 @@ def detect_outliers(data, label):
     # Q1 = median of lower_half
     m = len(lower_half)
     if m % 2 == 1:
-        q1 = lower_half[n // 2]
+        q1 = lower_half[m // 2]
     else:
         mid = m // 2
         q1 = (lower_half[mid-1] + lower_half[mid]) / 2
@@ -26,7 +26,7 @@ def detect_outliers(data, label):
     # Q3 = median of upper_half
     m = len(upper_half)
     if m % 2 == 1:
-        q3 = upper_half[n // 2]
+        q3 = upper_half[m // 2]
     else:
         mid = m // 2
         q3 = (upper_half[mid-1] + upper_half[mid]) / 2
@@ -62,23 +62,23 @@ def detect_outliers(data, label):
     }
 
 
-    results = []
+results = []
 
-    # PM2.5
-    pm25 = delhi["pm2_5"].dropna().values
-    results.append(compute_spread(pm25, "PM2.5 — Delhi"))
+# PM2.5
+pm25 = delhi["pm2_5"].dropna().values
+results.append(detect_outliers(pm25, "PM2.5 — Delhi"))
 
-    # PM10 
-    pm10 = delhi["rspm"].dropna().values
-    results.append(compute_spread(pm10, "PM10 (rspm) — Delhi"))
+# PM10 
+pm10 = delhi["rspm"].dropna().values
+results.append(detect_outliers(pm10, "PM10 (rspm) — Delhi"))
 
-    # NO2
-    no2 = delhi["no2"].dropna().values
-    results.append(compute_spread(no2, "NO2 — Delhi"))
-   
+# NO2
+no2 = delhi["no2"].dropna().values
+results.append(detect_outliers(no2, "NO2 — Delhi"))
 
-    delhi_reset = delhi[["sampling_date", "location", "pm2_5"]].dropna().reset_index(drop=True)
 
-    extreme_rows = delhi_reset[delhi_reset["pm2_5"] > upper_bound_pm25]
-    print(extreme_rows.sort_values("pm2_5", ascending=False).head(5))
+upper_bound_pm25 = results[0]["upper_bound"] 
+
+
+
     
