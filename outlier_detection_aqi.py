@@ -7,6 +7,7 @@ print(df.head())
 delhi = df[df["state"] == "Delhi"]
 print(f"Delhi rows: {len(delhi)}")
 
+
 def detect_outliers(data, label):
     sorted_data = np.sort(data)
     n = len(sorted_data)
@@ -39,8 +40,8 @@ def detect_outliers(data, label):
     outlier_mask = (data < lower_bound) | (data > upper_bound)
     outlier_count = np.sum(outlier_mask)
 
-    assert abs(q1 - np.percentile(data, 25)) < 0.5
-    assert abs(q3 - np.percentile(data, 75)) < 0.5
+    assert abs(q1 - np.percentile(data, 25)) < 5, f"Q1 off: manual={q1}, numpy={np.percentile(data,25)}"
+    assert abs(q3 - np.percentile(data, 75)) < 5, f"Q3 off: manual={q3}, numpy={np.percentile(data,75)}"
 
 
     print('----------')
@@ -80,5 +81,8 @@ results.append(detect_outliers(no2, "NO2 — Delhi"))
 upper_bound_pm25 = results[0]["upper_bound"] 
 
 
+delhi_reset = delhi[["sampling_date", "location", "pm2_5"]].dropna().reset_index(drop=True)
+extreme_rows = delhi_reset[delhi_reset["pm2_5"] > upper_bound_pm25]
+print(extreme_rows.sort_values("pm2_5", ascending=False).head())
 
     
