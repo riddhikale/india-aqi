@@ -22,3 +22,14 @@ for i in range(len(pollutant_cols)):
         if abs(corr_val) > 0.5:
             print(f"  {pollutant_cols[i]} vs {pollutant_cols[j]}: {corr_val:.2f}")
 
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(corr_matrix,
+    annot=True,
+    fmt=".2f",
+    cmap="viridis",
+    center=0)
+plt.title("Pollutant Correlation Matrix — India AQI")
+plt.tight_layout()
+plt.savefig("pollutant_correlation_heatmap.png", dpi=150)
+plt.show() 
