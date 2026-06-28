@@ -16,3 +16,15 @@ TRANSFORMS (before modelling):
   PM10  → np.log()
   NO2   → np.log()
   SO2   → np.log()  (min = 0.5, no zeros, safe)
+
+FEATURES TO DROP:
+  spm → correlated 0.80 with rspm (multicollinearity)
+
+FEATURES TO ADD:
+  is_extreme_event → 1 for October–November readings
+                     0 otherwise
+
+STANDARDISATION:
+  Compute std dev per city, not nationally.
+  Bhopal and Delhi have very different volatility profiles.
+"""
