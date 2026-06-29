@@ -1,3 +1,18 @@
+"""
+Detects outliers using IQR method from scratch for
+PM2.5, PM10, and NO2 in Delhi.
+
+Key finding:
+  Extreme PM2.5 readings (300+) cluster in October–November.
+  These are Diwali and crop-burning season spikes, not errors.
+  PM2.5: 13 outliers, PM10: 186 outliers, NO2: 565 outliers.
+
+  Keep October–November spikes in training data.
+  Add is_extreme_event=1 for these dates so the model
+  knows they are seasonal, not random noise.
+"""
+
+
 import numpy as np
 import pandas as pd
 
