@@ -1,3 +1,18 @@
+"""
+Computes variance, standard deviation and range from scratch
+using numpy for PM2.5, PM10, and NO2 in Delhi.
+Also computes PM2.5 std dev per city across all India.
+
+Key finding:
+  Bhopal is most volatile (std dev 64.46) despite lower mean (79.10).
+  Delhi is consistently bad (mean 95.11, std dev 47.06).
+
+  Compute std dev per city, not nationally.
+  Bhopal and Delhi have very different volatility profiles.
+"""
+
+
+
 import numpy as np
 import pandas as pd
 
