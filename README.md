@@ -2,8 +2,8 @@
 
 ## Dataset
 
-India Air Quality Data — 435,000+ rows across Indian cities.
-Source: Kaggle — shrutibhargava94/india-air-quality-data
+- India Air Quality Data — 435,000+ rows across Indian cities.
+- Source: Kaggle — shrutibhargava94/india-air-quality-data
 
 ## What I built
 
